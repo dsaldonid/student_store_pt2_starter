@@ -1,3 +1,4 @@
+"use strict"
 const { UnauthorizedError } = require("../utils/errors")
 const { SECRET_KEY } = require("../config")
 const jwt = require("jsonwebtoken")
@@ -43,13 +44,13 @@ const requireAuthenticatedUser = (req,res,next) =>{
             throw new UnauthorizedError()
         }
         return next()
-    }catch(err){
+    } catch(err){
         return next(err)
     }
 }
 
-module.export = {
+module.exports = {
     jwtFrom,
     extractUserFromJwt,
-    requireAuthenticatedUser
+    requireAuthenticatedUser,
 }
